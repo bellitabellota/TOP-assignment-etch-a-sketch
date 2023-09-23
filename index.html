@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch-a-Sketch</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: rgb(214, 235, 241);
+    }
+
+    h1, p {
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .row-container {
+      display: flex;
+    }
+
+    .row-container:last-child {
+      border-bottom: 1px solid black;
+    }
+
+    .cell {
+      background: pink;
+      width: 15px;
+      height: 15px;
+      border-top: 1px solid black;
+      border-right: 1px solid black;
+    }
+
+    .cell:first-child {
+      border-left: 1px solid black;
+    }
+
+    .mouseover {
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Etch-a-Sketch</h1>
+  <p>Click the left mouse button and hold to draw your painting.</p>
+  <div class="js-container container"></div>
+  <script>
+    createGrid();
+
+    const cells = document.querySelectorAll('.js-cell');
+
+    document.querySelector('.js-container').addEventListener('click', () => {
+      paintBlack();//extend function to inactivate the paintBlack function with mouseup
+    })
+
+    function paintBlack () {
+      cells.forEach((cell) => {
+        cell.addEventListener('mouseover', () => {
+          cell.classList.add('mouseover');
+        })
+      }) 
+    }
+
+    function createGrid() {
+      for(let ir = 1; ir <= 32; ir++) {
+        createRow();
+      }
+    }
+
+    function createRow () {
+      const rowContainer = document.createElement('div');
+      rowContainer.classList.add(`row-container`);
+      document.querySelector('.js-container').appendChild(rowContainer);
+
+      for (let ic = 1; ic <= 32; ic++) {
+        const div = document.createElement('div');
+        div.classList.add('cell', 'js-cell');
+        rowContainer.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>
