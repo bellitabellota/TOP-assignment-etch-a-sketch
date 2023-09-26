@@ -42,7 +42,7 @@
       border-left: 1px solid black;
     }
 
-    .mouseover {
+    .black {
       background: black;
     }
   </style>
@@ -55,19 +55,25 @@
     createGrid();
 
     const cells = document.querySelectorAll('.js-cell');
+    let isPainting = false;
 
-    document.querySelector('.js-container').addEventListener('click', () => {
-      paintBlack();//extend function to inactivate the paintBlack function with mouseup
+    cells.forEach((cell) => {
+      cell.addEventListener('mousedown', () => {
+        isPainting = true;
+        cell.classList.add('black');
+      })
+
+      cell.addEventListener('mouseup', () => {
+        isPainting = false;
+      })
+
+      cell.addEventListener('mouseover', () => {
+        if(isPainting) {
+          cell.classList.add('black');
+        }
+      })
     })
-
-    function paintBlack () {
-      cells.forEach((cell) => {
-        cell.addEventListener('mouseover', () => {
-          cell.classList.add('mouseover');
-        })
-      }) 
-    }
-
+    
     function createGrid() {
       for(let ir = 1; ir <= 32; ir++) {
         createRow();
