@@ -56,6 +56,11 @@
       display: flex;
       justify-content: space-around;
     }
+
+    .clear-button {
+      display: block;
+      margin: 0 auto 0 auto;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +72,7 @@
     <input type="range" id="vol" name="vol" value="32" min="32" max="100">
     <button class="js-apply-button">Apply new Grid size</button>
   </div>
-  
+  <button class="js-clear-button clear-button">Clear painting</button>
   <script>
     const gridSizeInput = document.getElementById('vol');
     let gridSize = gridSizeInput.value;
@@ -76,6 +81,13 @@
     let newGridSize;
 
     createGrid();
+
+    document.querySelector('.js-clear-button').addEventListener('click', () => {
+      const cells = document.querySelectorAll('.js-cell');
+      cells.forEach((cell) => {
+        cell.classList.remove('black');
+      })
+    })
 
     document.querySelector('.js-apply-button').addEventListener('click', () => {
       if (gridSize !== newGridSize) {
