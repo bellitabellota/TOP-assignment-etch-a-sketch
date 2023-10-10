@@ -60,10 +60,8 @@
 </head>
 <body>
   <h1>Etch-a-Sketch</h1>
-  
   <p>Click the left mouse button and hold to draw your painting.</p>
   <div class="js-container container"></div>
-
   <div class="slider-container">
       <label for="vol"></label>
     <input type="range" id="vol" name="vol" value="32" min="32" max="100">
@@ -91,8 +89,6 @@
       }
     })
 
-    //add clear button, only triggerl creatgrid if input value is changed??, make design
-
     gridSizeInput.addEventListener('input', () => {
       newGridSize = gridSizeInput.value;
       labelText = document.querySelector('label').innerHTML = `Grid size: ${newGridSize} x ${newGridSize}`;
@@ -107,7 +103,7 @@
           cell.classList.add('black');
         })
 
-        cell.addEventListener('mouseup', () => {
+        document.body.addEventListener('mouseup', () => {
           isPainting = false;
         })
 
