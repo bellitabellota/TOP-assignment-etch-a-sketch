@@ -8,21 +8,60 @@
     * {
       box-sizing: border-box;
     }
+
     body {
       background-color: rgb(214, 235, 241);
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .main-container {
+      margin-top: 10vh;
+      display: flex;
+      justify-content: space-evenly;
+      height: 80vh;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: rgb(218, 197, 12);
     }
 
     h1, p {
       text-align: center;
     }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    button {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background-color: rgba(255, 252, 197, 0.959);
+      border: 3px solid palevioletred;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 20px;
+      display: block;
+      width: 80%;
+      margin: 1.5rem auto 1rem auto;
+    }
+
+    button:hover {
+      background-color: rgb(241, 215, 191);
+      cursor: pointer;
+    }
+    
     .container {
-      max-width: 500px;
-      max-height: 500px;
-      width: 40vw;
-      height: 40vw;
+      max-width: 650px;
+      max-height: 650px;
+      width: 35vw;
+      height: 35vw;
       margin: 0 auto 0 auto;
       display: flex;
       flex-direction: column;
+      border: 2.5vw solid rgb(212, 29, 29);
+      border-radius: 30px;
     }
 
     .row-container {
@@ -49,30 +88,65 @@
       background: black;
     }
 
-    .slider-container {
-      max-width: 500px;
-      width: 40vw;
-      margin: 2rem auto 2rem auto;
-      display: flex;
-      justify-content: space-around;
+    .controls {
+      margin: 4rem auto 4rem auto;
+      border: 3px solid rgba(1, 131, 190, 0.979);
+      border-radius: 10px;
+      padding: 1rem;
+      width: 70%;
     }
 
-    .clear-button {
-      display: block;
-      margin: 0 auto 0 auto;
+    .slider {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 6vh;
     }
+
+    .right-column {
+      display: flex;
+      align-items: center;
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
   </style>
 </head>
 <body>
-  <h1>Etch-a-Sketch</h1>
-  <p>Click the left mouse button and hold to draw your painting.</p>
-  <div class="js-container container"></div>
-  <div class="slider-container">
-      <label for="vol"></label>
-    <input type="range" id="vol" name="vol" value="32" min="32" max="100">
-    <button class="js-apply-button">Apply new Grid size</button>
+  <div class="main-container">
+    <div class="left-column">
+      <div>
+        <h1>Etch-a-Sketch</h1>
+        <p>Click the left mouse button and hold to draw your painting.</p>
+      </div>
+
+
+      <div class="controls">
+        <div class="slider">
+          <label for="vol"></label>
+          <input type="range" id="vol" name="vol" value="32" min="32" max="100">
+        </div>
+        <button class="js-apply-button">Apply Grid size</button>
+        <button class="js-clear-button clear-button">Clear painting</button>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="js-container container"></div>
+    </div>
   </div>
-  <button class="js-clear-button clear-button">Clear painting</button>
+  
+  
+  
+  
+  
+
   <script>
     const gridSizeInput = document.getElementById('vol');
     let gridSize = gridSizeInput.value;
