@@ -16,13 +16,17 @@
       text-align: center;
     }
     .container {
+      max-width: 500px;
+      max-height: 500px;
+      width: 40vw;
+      height: 40vw;
+      margin: 0 auto 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     .row-container {
+      flex: 1;
       display: flex;
     }
 
@@ -31,9 +35,8 @@
     }
 
     .cell {
-      background: pink;
-      width: 15px;
-      height: 15px;
+      background: rgba(255, 239, 213, 0.82);
+      flex: 1;
       border-top: 1px solid black;
       border-right: 1px solid black;
     }
@@ -45,47 +48,90 @@
     .black {
       background: black;
     }
+
+    .slider-container {
+      max-width: 500px;
+      width: 40vw;
+      margin: 2rem auto 2rem auto;
+      display: flex;
+      justify-content: space-around;
+    }
   </style>
 </head>
 <body>
   <h1>Etch-a-Sketch</h1>
+  
   <p>Click the left mouse button and hold to draw your painting.</p>
   <div class="js-container container"></div>
+
+  <div class="slider-container">
+      <label for="vol"></label>
+    <input type="range" id="vol" name="vol" value="32" min="32" max="100">
+    <button class="js-apply-button">Apply new Grid size</button>
+  </div>
+  
   <script>
+    const gridSizeInput = document.getElementById('vol');
+    let gridSize = gridSizeInput.value;
+    let labelText = document.querySelector('label').innerHTML = `Grid size: ${gridSize} x ${gridSize}`;
+    const gridContainer = document.querySelector('.js-container');
+    let newGridSize;
+
     createGrid();
 
-    const cells = document.querySelectorAll('.js-cell');
-    let isPainting = false;
+    document.querySelector('.js-apply-button').addEventListener('click', () => {
+      if (gridSize !== newGridSize) {
+        gridSize = newGridSize;
 
-    cells.forEach((cell) => {
-      cell.addEventListener('mousedown', () => {
-        isPainting = true;
-        cell.classList.add('black');
-      })
-
-      cell.addEventListener('mouseup', () => {
-        isPainting = false;
-      })
-
-      cell.addEventListener('mouseover', () => {
-        if(isPainting) {
-          cell.classList.add('black');
+        while(gridContainer.lastChild) {
+          gridContainer.removeChild(gridContainer.lastChild);
         }
-      })
+        
+        createGrid();
+      }
     })
-    
+
+    //add clear button, only triggerl creatgrid if input value is changed??, make design
+
+    gridSizeInput.addEventListener('input', () => {
+      newGridSize = gridSizeInput.value;
+      labelText = document.querySelector('label').innerHTML = `Grid size: ${newGridSize} x ${newGridSize}`;
+    })
+
+    function drawPaintingOnHold() {
+      let isPainting = false;
+      const cells = document.querySelectorAll('.js-cell');
+      cells.forEach((cell) => {
+        cell.addEventListener('mousedown', () => {
+          isPainting = true;
+          cell.classList.add('black');
+        })
+
+        cell.addEventListener('mouseup', () => {
+          isPainting = false;
+        })
+
+        cell.addEventListener('mouseover', () => {
+          if(isPainting) {
+            cell.classList.add('black');
+          }
+        })
+      })
+    }
+
     function createGrid() {
-      for(let ir = 1; ir <= 32; ir++) {
+      for(let ir = 1; ir <= gridSize; ir++) {
         createRow();
       }
+      drawPaintingOnHold();
     }
 
     function createRow () {
       const rowContainer = document.createElement('div');
       rowContainer.classList.add(`row-container`);
-      document.querySelector('.js-container').appendChild(rowContainer);
+      gridContainer.appendChild(rowContainer);
 
-      for (let ic = 1; ic <= 32; ic++) {
+      for (let ic = 1; ic <= gridSize; ic++) {
         const div = document.createElement('div');
         div.classList.add('cell', 'js-cell');
         rowContainer.appendChild(div);
