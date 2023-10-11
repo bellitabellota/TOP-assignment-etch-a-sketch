@@ -4,7 +4,9 @@ let labelText = document.querySelector('label').innerHTML = `Grid size: ${gridSi
 const gridContainer = document.querySelector('.js-container');
 let newGridSize;
 
-createGrid();
+document.addEventListener('DOMContentLoaded', () => {
+  createGrid();
+})
 
 document.querySelector('.js-clear-button').addEventListener('click', () => {
   const cells = document.querySelectorAll('.js-cell');
@@ -67,5 +69,6 @@ function createRow () {
     const div = document.createElement('div');
     div.classList.add('cell', 'js-cell');
     rowContainer.appendChild(div);
+
   }
 }
