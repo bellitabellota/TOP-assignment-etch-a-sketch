@@ -16,9 +16,11 @@ document.querySelector('.js-clear-button').addEventListener('click', () => {
 })
 
 document.querySelector('.js-apply-button').addEventListener('click', () => {
-  if (gridSize !== newGridSize) {
+  if (newGridSize === undefined || gridSize === newGridSize) {
+    return
+  } else {
     gridSize = newGridSize;
-
+    
     while(gridContainer.lastChild) {
       gridContainer.removeChild(gridContainer.lastChild);
     }
