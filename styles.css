@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(214, 235, 241);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main-container {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  height: 80vh;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: rgb(218, 197, 12);
+}
+
+h1, p {
+  text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+button {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: rgba(255, 252, 197, 0.959);
+  border: 3px solid palevioletred;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 20px;
+  display: block;
+  width: 80%;
+  margin: 1.5rem auto 1rem auto;
+}
+
+button:hover {
+  background-color: rgb(241, 215, 191);
+  cursor: pointer;
+}
+
+.container {
+  max-width: 650px;
+  max-height: 650px;
+  width: 35vw;
+  height: 35vw;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  border: 2.5vw solid rgb(212, 29, 29);
+  border-radius: 30px;
+}
+
+.row-container {
+  flex: 1;
+  display: flex;
+}
+
+.row-container:last-child {
+  border-bottom: 1px solid black;
+}
+
+.cell {
+  background: rgba(255, 239, 213, 0.82);
+  flex: 1;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.cell:first-child {
+  border-left: 1px solid black;
+}
+
+.black {
+  background: black;
+}
+
+.controls {
+  margin: 4rem auto 4rem auto;
+  border: 3px solid rgba(1, 131, 190, 0.979);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 70%;
+}
+
+.slider {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 6vh;
+}
+
+.right-column {
+  display: flex;
+  align-items: center;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
