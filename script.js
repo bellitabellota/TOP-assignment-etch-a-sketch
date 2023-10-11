@@ -36,7 +36,8 @@ function drawPaintingOnHold() {
   let isPainting = false;
   const cells = document.querySelectorAll('.js-cell');
   cells.forEach((cell) => {
-    cell.addEventListener('mousedown', () => {
+    cell.addEventListener('mousedown', (event) => {
+      event.preventDefault();
       isPainting = true;
       cell.classList.add('black');
     })
