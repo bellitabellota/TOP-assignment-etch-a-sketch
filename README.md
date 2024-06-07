@@ -1,3 +1,5 @@
+For a Live preview visit this [link](https://bellitabellota.github.io/TOP-assignment-rock-paper-scissors/).
+
 # Etch-a-Sketch
 
 ## Assignment instructions from The Odin Project (TOP)
