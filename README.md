@@ -1,4 +1,9 @@
-For a Live preview visit this [link](https://bellitabellota.github.io/TOP-assignment-rock-paper-scissors/).
+Preview
+
+<img src="https://github.com/bellitabellota/TOP-assignment-etch-a-sketch/blob/main/Edge%20A%20Sketch.gif" />
+
+Want to try yourself? Visit this [link](https://bellitabellota.github.io/TOP-assignment-etch-a-sketch/).
+
 
 # Etch-a-Sketch
 
